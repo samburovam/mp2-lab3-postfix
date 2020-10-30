@@ -3,22 +3,29 @@
 
 #include <string>
 #include "stack.h"
+#include <iostream>
+#include <vector>
 
 using namespace std;
 
 class TPostfix
 {
-  string infix;
-  string postfix;
+	string infix;
+	string postfix;
+	double* value; 
+	TStack<char> stackOperation; 
+	TStack<string> stackArguments; 
+	TStack<double> stackValue; 
+	TStack<double> stackValuePostfix; 
+
 public:
-  TPostfix()
-  {
-    infix = "a + b";
-  }
-  string GetInfix() { return infix; }
-  string GetPostfix() { return postfix; }
-  string ToPostfix();
-  double Calculate(); // Ввод переменных, вычисление по постфиксной форме
+	TPostfix();
+	TPostfix(string _infix);
+	string GetInfix();
+	string GetPostfix();
+	bool IsCorrect(); 
+	void ToPostfix();
+	double Calculate(); 
 };
 
 #endif
